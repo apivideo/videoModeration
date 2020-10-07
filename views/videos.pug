@@ -1,0 +1,20 @@
+doctype html
+head
+  title  Video Portal 
+//  link(rel="stylesheet" href="/style.css")
+  meta(name="viewport" content="width=device-width, initial-scale=1")
+  meta(charset='utf-8')
+body
+  h3 Recorded Sessions
+  
+  each video in list
+    p #{video.title}
+    iframe(type="text/html", src=video.assets.player, width = "960", height="540",frameborder="0", scrollling="no")
+    p #{video.Published}
+   
+  //{"Title": list[i].title,"Player": list[i].assets.player,"Published": list[i].publishedAt};
+  footer Made with:
+  a(href='https://api.video') api.video 
+  | and 
+  a(href="https://glitch.com") Glitch
+

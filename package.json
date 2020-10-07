@@ -1,0 +1,40 @@
+{
+  "name": "autocaption",
+  "version": "1.0.0",
+  "description": "Upload a video to api.video and then automatically generate captions from Happy Scribe (NodeJS)",
+  "main": "index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "dependencies": {
+    "@api.video/nodejs-sdk": "^1.8.2",
+    "axios": "^0.20.0",
+    "babel-core": "^6.26.3",
+    "babel-node": "0.0.1-security",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7",
+    "pug": "^2.0.4",
+    "serve-favicon": "^2.5.0"
+  },
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startprod": "babel-node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dougsillars/autoCaption.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dougsillars/autoCaption/issues"
+  },
+  "homepage": "https://github.com/dougsillars/autoCaption#readme"
+}
