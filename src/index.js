@@ -30,7 +30,7 @@ const hiveCaptionKey =  process.env.hiveKey;
 const hiveModerationShortKey = process.env.hiveModerationShortKey;
 const hiveModerationLongKey = process.env.hiveModerationLongKey;
 
-const hiveKey = hiveModerationShortKey;
+const hiveKey = hiveModerationLongKey;
 // website demo
 //get request is the initial request - load the HTML page with the form
 app.get('/', (req, res) => {
@@ -167,8 +167,8 @@ app.post('/', (req, res) => {
 
 
 //testing on 3001
-app.listen(3001, () =>
-  console.log('Example app listening on port 3001!'),
+app.listen(3002, () =>
+  console.log('Example app listening on port 3002!'),
 );
 process.on('uncaughtException', function(err) {
     // handle the error safely
