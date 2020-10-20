@@ -10,5 +10,5 @@ More and more companies are interested in incorporating UGC content on their sit
 
 !(docs/comments.jpg)
 !(/docs/comments.jpg)
-!(https://github.com/dougsillars/videoModeration/blob/main/docs/comments.jpeg)
+!(https://github.com/dougsillars/videoModeration/blob/main/docs/comments.jpeg?raw=true)
 User generated content 
