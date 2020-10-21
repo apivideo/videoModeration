@@ -24,8 +24,8 @@ let threshold = 0.9;
 const apiVideo = require('@api.video/nodejs-sdk');
 
 
-//api keys  process.env.invoiceToken;
-const apiVideoKey = process.env.apiKey;
+//if you chnage the key to sandbox or prod - make sure you fix the delegated toekn on the upload page
+const apiVideoKey = process.env.apiProductionKey;
 const hiveCaptionKey =  process.env.hiveKey;
 const hiveModerationShortKey = process.env.hiveModerationShortKey;
 const hiveModerationLongKey = process.env.hiveModerationLongKey;
@@ -76,10 +76,36 @@ app.get('/nazism', (req, res) => {
 	});
 		
 });
+app.get('/no_nazism', (req, res) => {
+	//get list of SFW videos
+	client = new apiVideo.Client({ apiKey: apiVideoKey});
+	let recordedList = client.videos.search({"tags":'no_nazism'});
+	recordedList.then(function(list) {
+		console.log("list of tagged videos");
+		console.log(list);
+		return res.render('videos',{list});  
+	}).catch((error) => {
+	    console.log(error);
+	});
+		
+});
 app.get('/shirtlessmale', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'Shirtless male'});
+	let recordedList = client.videos.search({"tags":'Shirtless_male'});
+	recordedList.then(function(list) {
+		console.log("list of tagged videos");
+		console.log(list);
+		return res.render('videos',{list});  
+	}).catch((error) => {
+	    console.log(error);
+	});
+		
+});
+app.get('/no_shirtlessmale', (req, res) => {
+	//get list of SFW videos
+	client = new apiVideo.Client({ apiKey: apiVideoKey});
+	let recordedList = client.videos.search({"tags":'no_Shirtless_male'});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -92,7 +118,72 @@ app.get('/shirtlessmale', (req, res) => {
 app.get('/femaleswimwear', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'female swimwear'});
+	let recordedList = client.videos.search({"tags":'female_swimwear'});
+	recordedList.then(function(list) {
+		console.log("list of tagged videos");
+		console.log(list);
+		return res.render('videos',{list});  
+	}).catch((error) => {
+	    console.log(error);
+	});
+		
+});
+app.get('/no_guns', (req, res) => {
+	//get list of SFW videos
+	client = new apiVideo.Client({ apiKey: apiVideoKey});
+	let recordedList = client.videos.search({"tags":'no_guns'});
+	recordedList.then(function(list) {
+		console.log("list of tagged videos");
+		console.log(list);
+		return res.render('videos',{list});  
+	}).catch((error) => {
+	    console.log(error);
+	});
+		
+});
+app.get('/yes_guns', (req, res) => {
+	//get list of SFW videos
+	client = new apiVideo.Client({ apiKey: apiVideoKey});
+	let recordedList = client.videos.search({"tags":'yes_guns'});
+	recordedList.then(function(list) {
+		console.log("list of tagged videos");
+		console.log(list);
+		return res.render('videos',{list});  
+	}).catch((error) => {
+	    console.log(error);
+	});
+		
+});
+app.get('/yes_smoking', (req, res) => {
+	//get list of SFW videos
+	client = new apiVideo.Client({ apiKey: apiVideoKey});
+	let recordedList = client.videos.search({"tags":'yes_smoking'});
+	recordedList.then(function(list) {
+		console.log("list of tagged videos");
+		console.log(list);
+		return res.render('videos',{list});  
+	}).catch((error) => {
+	    console.log(error);
+	});
+		
+});
+app.get('/no_smoking', (req, res) => {
+	//get list of SFW videos
+	client = new apiVideo.Client({ apiKey: apiVideoKey});
+	let recordedList = client.videos.search({"tags":'no_smoking'});
+	recordedList.then(function(list) {
+		console.log("list of tagged videos");
+		console.log(list);
+		return res.render('videos',{list});  
+	}).catch((error) => {
+	    console.log(error);
+	});
+		
+});
+app.get('/no_femaleswimwear', (req, res) => {
+	//get list of SFW videos
+	client = new apiVideo.Client({ apiKey: apiVideoKey});
+	let recordedList = client.videos.search({"tags":'no_female_swimwear'});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -119,7 +210,7 @@ app.get('/encoding', (req, res) => {
 
 
 app.post('/', (req, res) => {
-	
+	console.log(req);
 	//get values from POST body
 	let videoId=req.body.videoId;
 	let videoName = req.body.videoName;
@@ -252,7 +343,7 @@ async function makeModerationRequest(mp4,videoName, videoId){
 		});	
 	
 		
-	}
+}
 	
 	
 	function moderationSummary(results, videoId){
@@ -262,12 +353,18 @@ async function makeModerationRequest(mp4,videoName, videoId){
 		results = JSON.parse(results);
 	console.log(results);
 		let frameResults = results.status[0].response;
-		let yes_nazi = [];	
+		
+		//each attribute to be tested has an empty array
+		let yes_nazi = [];
 		let safeForWork=[];
 		let yes_female_nudity=[];
 		let yes_male_nudity=[];
 		let yes_male_shirtless=[];
 		let yes_female_swimwear=[];
+		let no_guns=[];
+		let no_smoking=[];
+		
+		//add the details for each tested frame into each array
 		for (let i=0;i<frameResults.output.length;i++){
 		
 			for(let j=0;j<frameResults.output[0].classes.length;j++){
@@ -308,7 +405,18 @@ async function makeModerationRequest(mp4,videoName, videoId){
 					if(frameResults.output[i].classes[j].score> threshold){
 					}	
 				}
-			
+				else if (frameResults.output[i].classes[j].class =="no_gun"){
+					//do something
+					no_guns[i] = Math.round(frameResults.output[i].classes[j].score*100)/100;
+					if(frameResults.output[i].classes[j].score> threshold){
+					}	
+				}
+				else if (frameResults.output[i].classes[j].class =="no_smoking"){
+					//do something
+					no_smoking[i] = Math.round(frameResults.output[i].classes[j].score*100)/100;
+					if(frameResults.output[i].classes[j].score> threshold){
+					}	
+				}
 		
 			}	
 		}
@@ -331,12 +439,20 @@ async function makeModerationRequest(mp4,videoName, videoId){
 		console.log("there be nazis?");
 		console.log(yes_nazi);
 	    let naziarray = minMaxMedian(yes_nazi);
+		console.log("no guns??");
+		console.log(no_guns);
+	    let noguns = minMaxMedian((no_guns));
+		console.log("no smoking?");
+		console.log(no_smoking);
+	    let nosmoking = minMaxMedian(no_smoking);
+		
 	
 		//now for pass fail.
 		//SFW.  if <90% of frames arn SFW (Threshold)
 		//[min, max, avg, counter, bottomCounter];
 		let moderation = []
-		if(SFWarray[3]/frameResults.output.length < threshold){
+		//if the median value is not 90% cinfindent to be safe - that means at least 50% of teh frames are not 90% confident to be safe...
+		if(SFWarray[5] < threshold){
 			moderation.push("NSFW");
 		}else{
 			//>90% are safe
@@ -349,14 +465,36 @@ async function makeModerationRequest(mp4,videoName, videoId){
 		if(NMarray[3] >0){
 			moderation.push("male_nudity");
 		}
+		//of one framce is 90% sure of Nazis - NAZI.
 		if(naziarray[3] >0){
 			moderation.push("nazism");
+		}else{
+			moderation.push("no_nazism");
 		}
-		if(SMarray[3]/frameResults.output.length > (1-threshold)){
-			moderation.push("Shirtless male");
+		//if we are 90% sure we see one shirltless man - shirtless
+		if(SMarray[3]>0){
+			moderation.push("Shirtless_male");
+		}else{
+			moderation.push("no_Shirtless_male");
 		}
-		if(FSarray[3]/frameResults.output.length > (1-threshold)){
-			moderation.push("female swimwear");
+		if(FSarray[3]>0){
+			moderation.push("female_swimwear");
+		}else{
+			moderation.push("no_female_swimwear");
+		}
+		
+		//if one frame shows a gun - ther eare guns...
+		if(noguns[4] >0){
+			moderation.push("yes_guns");
+		}else{
+			moderation.push("no_guns");
+		}
+		
+		//if one frame shows smoking - there is smoking...
+		if(nosmoking[4] >0){
+			moderation.push("yes_smoking");
+		}else{
+			moderation.push("no_smoking");
 		}
 		console.log(moderation);
 		//now update tags in api.video with the moderation tags
@@ -375,6 +513,15 @@ async function makeModerationRequest(mp4,videoName, videoId){
 		let min = Math.min.apply(Math, array);
 		let max = Math.max.apply(Math, array);
 		const average = list => list.reduce((prev, curr) => prev + curr) / list.length;	
+		array.sort();
+		console.log("sorted array", array);
+		let median ="";
+		if(array.length%2 == 0){
+			median = array[array.length/2];
+		}else{
+			median = (array[Math.floor(array.length/2)]+array[Math.ceil(array.length/2)])/2
+		}
+		
 		let avg = average(array);
 		let counter = 0;
 		let bottomCounter=0;
@@ -389,12 +536,11 @@ async function makeModerationRequest(mp4,videoName, videoId){
 	        }
 	    });
 	
-		console.log(min, max, avg, counter, bottomCounter);
-		results = [min, max, avg, counter, bottomCounter];
+		console.log(min, max, avg, counter, bottomCounter, median);
+		results = [min, max, avg, counter, bottomCounter, median];
 		return results;
 		
 		
 	}
 
-	
 	

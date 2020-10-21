@@ -1,0 +1,65 @@
+
+	body {background-color: #fa5B30;
+		  color:white;
+		}
+	h1 {
+		color: white;
+		width: 100%;
+		text-align: center;
+		
+	}
+	footer {
+		text-align:center;
+		color:white;
+		padding: 10px;
+		border-color: black;
+		border-style:solid;
+		border-width: thin;
+	}
+	#linklist {
+		text-align:center;
+		color:white;
+		padding: 25px;
+		border-color: black;
+		border-style:solid;
+		border-width: thin;
+		
+	}
+	#form {
+		width: 25%;
+		padding: 10px;
+		border-color: black;
+		border-style:solid;
+		border-width: thin;
+		margin:auto;
+		text-align:center;
+		color:white;
+		
+		
+		
+	}
+	#videoName{
+		background-color: BBBBBB;
+		color: white;
+		align: center;
+		
+		
+	}
+	#video-url-example{
+		content: 'Select some files';
+		  display: inline-block;
+		  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+		  padding: 5px 8px;
+		  outline: none;
+		  white-space: nowrap;
+		  -webkit-user-select: none;
+		  cursor: pointer;
+		  
+		
+	}
+	#submit-button{
+		width: 25%;
+		height: 25px;
+		background-color: white;
+		color:535353;
+	}

@@ -1,20 +1,39 @@
 <html>
-
+<head>
+ <link rel="stylesheet" href="style.css">
+	
+</head>
 
 <body>
-	Add a video here:
+	<h1 id= "title">
+		Upload your video to be moderated
+	</h1>
 	<br>
-
+	<div id="form">
 	
 		<label for="videoName">Video Name:</label> 
-		<input type="text" id="videoName" value= "my video"> <br/>
+		<input type="text" id="videoName" value= "my video"> 
+		<br/><br/>
+
 
 	
 		<input type="file" id="video-url-example">
 		<br/><br/>
 		<input type="submit" id="submit-button" value ="Submit" >
-
-	<br>
+	</div>
+	<br/><br/>
+	<div id="video-information" style="width: 50%"></div>
+	<div id="chunk-information" style="width: 50%"></div>
+	<br/><br/>
+	<h1>Moderated pages</h1>
+	
+	<a href="/SFW">Videos Safe For Work</a><br/>
+	<a href="/nazism">Videos that may contain Nazis</a><br/>
+	<a href="/no_nazism">Videos that do not contain Nazis</a><br/>
+	<a href="/shirtlessmale">Videos that may contain shirtless men</a><br/>
+	<a href="/no_shirtlessmale">Videos that do not contain shirtless men</a><br/>
+	<a href="/femaleswimwear">Videos that may contain women in swimwear</a><br/>
+	<a href="/no_femaleswimwear">Videos that do not contain women in swimwear</a><br/>
 	
 	
 	
@@ -26,10 +45,10 @@
 		
 	  const submit = document.getElementById('submit-button');	
 	 
-	  const url ="https://ws.api.video/upload?token=to1R5LOYV0091XN3GQva27OS";
+	  const url ="https://ws.api.video/upload?token=toYSIwyzSd1ICJzMwdSYBrO";
 	  var chunkCounter =0;
-	  //break into 1 MB chunks for demo purposes
-	  const chunkSize = 10000000;  
+	  //break into 50 MB chunks for demo purposes
+	  const chunkSize = 50000000;  
 	  var videoId = "";
 	  var playerUrl = "";
 	  

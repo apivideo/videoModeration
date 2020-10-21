@@ -1,11 +1,11 @@
 doctype html
 head
   title  Video Portal 
-//  link(rel="stylesheet" href="/style.css")
+  link(rel="stylesheet" href="/style.css")
   meta(name="viewport" content="width=device-width, initial-scale=1")
   meta(charset='utf-8')
 body
-  h3 Recorded Sessions
+  h1 Video List
   
   each video in list
     p #{video.title}
@@ -13,8 +13,25 @@ body
     p #{video.Published}
    
   //{"Title": list[i].title,"Player": list[i].assets.player,"Published": list[i].publishedAt};
-  footer Made with:
-  a(href='https://api.video') api.video 
-  | and 
-  a(href="https://glitch.com") Glitch
+  
+  a(href='/') upload another!
+  p
+  
+  div.linklist
+   <a href="/SFW">Videos Safe For Work</a><br/>
+   <a href="/nazism">Videos that may contain Nazis</a><br/>
+   <a href="/no_nazism">Videos that do not contain Nazis</a><br/>
+   <a href="/shirtlessmale">Videos that may contain shirtless men</a><br/>
+   <a href="/no_shirtlessmale">Videos that do not contain shirtless men</a><br/>
+   <a href="/femaleswimwear">Videos that may contain women in swimwear</a><br/>
+   <a href="/no_femaleswimwear">Videos that do not contain women in swimwear</a><br/>
+   <a href="/no_guns">Videos that do not have guns</a><br/>
+   <a href="/yes_guns">Videos that do have guns</a><br/>
+   <a href="/no_smoking">Videos that do not have smoking</a><br/>
+   <a href="/yes_smoking">Videos that do have smoking</a><br/>
+  footer 
+   p Made with:
+   a(href='https://api.video') api.video 
+   | and 
+   a(href="https://thehive.ai") Hive AI
 

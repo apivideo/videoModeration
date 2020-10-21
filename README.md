@@ -11,7 +11,7 @@ More and more companies are interested in incorporating UGC content on their sit
 
 ![](https://github.com/dougsillars/videoModeration/blob/main/docs/comments.jpeg?raw=true)
 
-###User generated content 
+### User generated content 
 
 The comments can beome extremely toxic - imageine user generated videos.  It is important that any abuses that might be perputrated by bad actors do not make it to the website for vistors to see.  
 
