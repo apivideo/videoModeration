@@ -37,8 +37,8 @@ In this demo, we use api.video as the video hosting service, and moderate the vi
 
 You will need API keys for api.video and HiveAI.
 
-Sign up for your [api.video](http://my.api.video/register/community) key.  The sandbox key gives you unlimited free uploads, but thye are deleted after 72 hours.
-Sign up for your [HiveAI](https://thehive.ai/signup) API key.  You will need to ask for the key you want - video moderation.  They currently have 2 products: one for short videos (~30s), and another for long. Both analyze 1 frame per second, so I would recommend the "long" API.
+* Sign up for your [api.video](http://my.api.video/register/community) key.  The sandbox key gives you unlimited free uploads, but thye are deleted after 72 hours.
+* Sign up for your [HiveAI](https://thehive.ai/signup) API key.  You will need to ask for the key you want - video moderation.  They currently have 2 products: one for short videos (~30s), and another for long. Both analyze 1 frame per second, so I would recommend the "long" API.
 
 ### Deploying
 
@@ -48,7 +48,9 @@ You'll also need to create a .env file for your API keys.  Name the variables in
 For example:
 
 ```const apiVideoKey = process.env.apiProductionKey;```
-is defining the api.video production key, so the .env file will have
+
+is defining the api.video production key, so the .env file will have:
+
 ```apiProductionKey={apiToken here}```
 
 Run the node server. ```npm start``` will start running this on port 3002.
