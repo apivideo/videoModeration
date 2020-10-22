@@ -66,7 +66,8 @@ Run the node server. ```npm start``` will start running this on port 3002.
 3. The moderation can only be run on the mp4 version of the video, so once the mp4 is encoded (there is a 2 second "ping" to check the encoding status), the file is sent to the Hive for moderation.
 4. Every second, Hive extracts a frame and checks against [many types of content](https://thehive.ai/hive-moderation-suite).  A JSON response for each frame is returned to the Node Server.
 5. moderationSummary creates a bunch of arrays for a few of the measured attributes:
-```		let yes_nazi = [];
+```		
+		let yes_nazi = [];
 		let safeForWork=[];
 		let yes_female_nudity=[];
 		let yes_male_nudity=[];
@@ -74,7 +75,8 @@ Run the node server. ```npm start``` will start running this on port 3002.
 		let yes_female_swimwear=[];
 		let no_guns=[];
 		let no_smoking=[];
-		```
+```
+
 6. We calculate min, max, average and Median scores.  The threshold for someting passing is 09 (out of 1).  We created metrics for pass/fail.  
 * For example - if the median score for "safe For Work" is under 90%, that means that at least half the framce are not certin to be safe for work - and we label the video NSFW.
 * if there is one frame with smoking - the video is labeled as having smoking. (same for Nazis, nudity, guns.)
