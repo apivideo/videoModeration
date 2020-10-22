@@ -40,6 +40,9 @@ You will need API keys for api.video and HiveAI.
 * Sign up for your [api.video](http://my.api.video/register/community) key.  The sandbox key gives you unlimited free uploads, but thye are deleted after 72 hours.
 * Sign up for your [HiveAI](https://thehive.ai/signup) API key.  You will need to ask for the key you want - video moderation.  They currently have 2 products: one for short videos (~30s), and another for long. Both analyze 1 frame per second, so I would recommend the "long" API.
 
+* Create a delegated upload token for api.video. Here's a [tutorial how](https://api.video/blog/tutorials/delegated-uploads).  The add this in line 48 of public/indexchunks.html.  Also note: if you move from Sandbox to production on api.video (or vie-versa), you'll need  a new delegated token for the new environment.
+
+
 ### Deploying
 
 The code is NodeJS, so you'll need to install all the node dependencies: ```npm install```
@@ -58,4 +61,24 @@ Run the node server. ```npm start``` will start running this on port 3002.
 
 ## What's under the hood
 
+1. Delegated video upload.  This upload process uses a public key. Anyone with this link can upload videos into your account at api.video.  To ensure every video can be uploaded, we use the JavaScript Blob API to break the video into 50MB segments for upload.
+2. Once the video is uploaded, a POST with the videoId and video name is sent to the NOde server.  The file name is updated, and the initial tag of "needsScreening" indicating that the ideo has not had moderation run yet.
+3. The moderation can only be run on the mp4 version of the video, so once the mp4 is encoded (there is a 2 second "ping" to check the encoding status), the file is sent to the Hive for moderation.
+4. Every second, Hive extracts a frame and checks against [many types of content](https://thehive.ai/hive-moderation-suite).  A JSON response for each frame is returned to the Node Server.
+5. moderationSummary creates a bunch of arrays for a few of the measured attributes:
+```		let yes_nazi = [];
+		let safeForWork=[];
+		let yes_female_nudity=[];
+		let yes_male_nudity=[];
+		let yes_male_shirtless=[];
+		let yes_female_swimwear=[];
+		let no_guns=[];
+		let no_smoking=[];
+		```
+6. We calculate min, max, average and Median scores.  The threshold for someting passing is 09 (out of 1).  We created metrics for pass/fail.  
+* For example - if the median score for "safe For Work" is under 90%, that means that at least half the framce are not certin to be safe for work - and we label the video NSFW.
+* if there is one frame with smoking - the video is labeled as having smoking. (same for Nazis, nudity, guns.)
+7. The video is updated at api.video with new tags.
+
+Finally, there are a series of pages that list the videos that have each tag.  "/SFW" displays all of the 'safe for work' videos, etc.
 
