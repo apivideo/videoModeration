@@ -8,11 +8,11 @@
 	<h1 id= "title">
 		Upload your video to be moderated
 	</h1>
-	NOTE: for moderation to be successful, videos must be under 30s long.
+
 	<br>
 	<div id="form">
 	
-		<label for="videoName">Video Name:</label> 
+		<label for="videoName">Video Title:</label> 
 		<input type="text" id="videoName" value= "my video"> 
 		<br/><br/>
 
@@ -22,10 +22,19 @@
 		<br/><br/>
 		<input type="submit" id="submit-button" value ="Submit" >
 	</div>
-	<br/><br/>
+	<br/>
 	<div id="video-information" style="width: 50%"></div>
 	<div id="chunk-information" style="width: 50%"></div>
-	<br/><br/>
+	<br/>
+	<div id="description">
+	This app will upload your video to <a href="https://api.video">api.video</a>, and then sent to <a href="https://thehive.ai">Hive Ai</a> for video moderation.
+
+	Read about how this was built on our blog.  Build your own, the code is available on <a href="https://github.com/dougsillars/videoModeration">Github</a><div class="">
+	<br/>
+	Once your video has been categorised, it can bee seen on pages below.
+	</div>
+	</div>
+
 	<h1>Moderated pages</h1>
 	
 	<a href="SFW">Videos Safe For Work</a><br/>
@@ -170,8 +179,9 @@
 	
 	  });
 	</script>
-Powered by: <a href="https://api.video">api.video</a> and <a href="https://thehive.ai">Hive</a>
-	
+Powered by: <a href="https://api.video">api.video</a> and <a href="https://thehive.ai">Hive</a><br/>
+
+
 	
 </body>
 

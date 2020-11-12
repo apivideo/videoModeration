@@ -5,6 +5,8 @@ const express = require('express');
 const app = express();
 const pug = require('pug');
 const path = require('path');
+var publicDir = path.join(__dirname, 'public');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine','pug');
@@ -30,7 +32,7 @@ const hiveCaptionKey =  process.env.hiveKey;
 const hiveModerationShortKey = process.env.hiveModerationShortKey;
 const hiveModerationLongKey = process.env.hiveModerationLongKey;
 
-const hiveKey = hiveModerationShortKey;
+const hiveKey = hiveModerationLongKey;
 // website demo
 //get request is the initial request - load the HTML page with the form
 app.get('/', (req, res) => {
