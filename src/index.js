@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 app.get('/NSFW', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'NSFW'});
+	let recordedList = client.videos.search({"tags":'NSFW', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -55,7 +55,7 @@ app.get('/NSFW', (req, res) => {
 app.get('/SFW', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'SFW'});
+	let recordedList = client.videos.search({"tags":'SFW', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -68,7 +68,7 @@ app.get('/SFW', (req, res) => {
 app.get('/nazism', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'nazism'});
+	let recordedList = client.videos.search({"tags":'nazism', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -81,7 +81,7 @@ app.get('/nazism', (req, res) => {
 app.get('/no_nazism', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'no_nazism'});
+	let recordedList = client.videos.search({"tags":'no_nazism', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -94,7 +94,7 @@ app.get('/no_nazism', (req, res) => {
 app.get('/shirtlessmale', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'Shirtless_male'});
+	let recordedList = client.videos.search({"tags":'Shirtless_male', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -107,7 +107,7 @@ app.get('/shirtlessmale', (req, res) => {
 app.get('/no_shirtlessmale', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'no_Shirtless_male'});
+	let recordedList = client.videos.search({"tags":'no_Shirtless_male', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -120,7 +120,7 @@ app.get('/no_shirtlessmale', (req, res) => {
 app.get('/femaleswimwear', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'female_swimwear'});
+	let recordedList = client.videos.search({"tags":'female_swimwear', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -133,7 +133,7 @@ app.get('/femaleswimwear', (req, res) => {
 app.get('/no_guns', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'no_guns'});
+	let recordedList = client.videos.search({"tags":'no_guns', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -146,7 +146,7 @@ app.get('/no_guns', (req, res) => {
 app.get('/yes_guns', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'yes_guns'});
+	let recordedList = client.videos.search({"tags":'yes_guns', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -159,7 +159,7 @@ app.get('/yes_guns', (req, res) => {
 app.get('/yes_smoking', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'yes_smoking'});
+	let recordedList = client.videos.search({"tags":'yes_smoking', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -172,7 +172,7 @@ app.get('/yes_smoking', (req, res) => {
 app.get('/no_smoking', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'no_smoking'});
+	let recordedList = client.videos.search({"tags":'no_smoking', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -185,7 +185,7 @@ app.get('/no_smoking', (req, res) => {
 app.get('/no_femaleswimwear', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'no_female_swimwear'});
+	let recordedList = client.videos.search({"tags":'no_female_swimwear', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);
@@ -198,7 +198,7 @@ app.get('/no_femaleswimwear', (req, res) => {
 app.get('/encoding', (req, res) => {
 	//get list of SFW videos
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
-	let recordedList = client.videos.search({"tags":'needsScreening'});
+	let recordedList = client.videos.search({"tags":'needsScreening', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
 		console.log("list of tagged videos");
 		console.log(list);

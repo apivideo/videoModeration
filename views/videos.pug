@@ -8,9 +8,9 @@ body
   h1 Video List
   
   each video in list
-    p #{video.title}
+    h2 #{video.title}
     iframe(type="text/html", src=video.assets.player, width = "960", height="540",frameborder="0", scrollling="no")
-    p #{video.Published}
+    p #{video.publishedAt}
    
   //{"Title": list[i].title,"Player": list[i].assets.player,"Published": list[i].publishedAt};
   
