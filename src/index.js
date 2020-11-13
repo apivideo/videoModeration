@@ -32,7 +32,7 @@ const hiveCaptionKey =  process.env.hiveKey;
 const hiveModerationShortKey = process.env.hiveModerationShortKey;
 const hiveModerationLongKey = process.env.hiveModerationLongKey;
 
-const hiveKey = hiveModerationLongKey;
+const hiveKey = hiveModerationShortKey;
 // website demo
 //get request is the initial request - load the HTML page with the form
 app.get('/', (req, res) => {
