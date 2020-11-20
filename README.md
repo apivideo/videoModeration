@@ -84,3 +84,10 @@ Run the node server. ```npm start``` will start running this on port 3002.
 
 Finally, there are a series of pages that list the videos that have each tag.  "/SFW" displays all of the 'safe for work' videos, etc.
 
+
+
+## installation
+
+clone the repo
+npm install (for all dependencies)
+node src/index.js
