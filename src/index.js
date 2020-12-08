@@ -40,7 +40,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/NSFW', (req, res) => {
-	//get list of SFW videos
+	//get list of NSFW videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'NSFW', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -52,8 +53,10 @@ app.get('/NSFW', (req, res) => {
 	});
 		
 });
+
 app.get('/SFW', (req, res) => {
 	//get list of SFW videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'SFW', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -66,7 +69,8 @@ app.get('/SFW', (req, res) => {
 		
 });
 app.get('/nazism', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'nazism', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -79,7 +83,8 @@ app.get('/nazism', (req, res) => {
 		
 });
 app.get('/no_nazism', (req, res) => {
-	//get list of SFW videos
+	//get list of videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'no_nazism', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -92,7 +97,8 @@ app.get('/no_nazism', (req, res) => {
 		
 });
 app.get('/shirtlessmale', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'Shirtless_male', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -105,7 +111,8 @@ app.get('/shirtlessmale', (req, res) => {
 		
 });
 app.get('/no_shirtlessmale', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'no_Shirtless_male', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -118,7 +125,8 @@ app.get('/no_shirtlessmale', (req, res) => {
 		
 });
 app.get('/femaleswimwear', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'female_swimwear', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -131,7 +139,8 @@ app.get('/femaleswimwear', (req, res) => {
 		
 });
 app.get('/no_guns', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'no_guns', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -144,7 +153,8 @@ app.get('/no_guns', (req, res) => {
 		
 });
 app.get('/yes_guns', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'yes_guns', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -157,7 +167,8 @@ app.get('/yes_guns', (req, res) => {
 		
 });
 app.get('/yes_smoking', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'yes_smoking', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -170,7 +181,8 @@ app.get('/yes_smoking', (req, res) => {
 		
 });
 app.get('/no_smoking', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'no_smoking', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -183,7 +195,8 @@ app.get('/no_smoking', (req, res) => {
 		
 });
 app.get('/no_femaleswimwear', (req, res) => {
-	//get list of SFW videos
+	//get list of  videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'no_female_swimwear', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -196,7 +209,7 @@ app.get('/no_femaleswimwear', (req, res) => {
 		
 });
 app.get('/encoding', (req, res) => {
-	//get list of SFW videos
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	client = new apiVideo.Client({ apiKey: apiVideoKey});
 	let recordedList = client.videos.search({"tags":'needsScreening', "sortBy":"publishedAt","sortOrder":"desc"});
 	recordedList.then(function(list) {
@@ -208,6 +221,7 @@ app.get('/encoding', (req, res) => {
 	});
 		
 });
+
 
 
 
@@ -249,7 +263,20 @@ app.post('/', (req, res) => {
 			
 		    var iframecode = "iframe id='videoPlayer', src='"+player+"#autoplay', height='100%', width='100%'";
 			//not ready to send to the 
-			return res.render('result',{videoId, videoName,player, iframecode});
+			//return res.render('result',{videoId, videoName,player, iframecode});
+			
+			//return moderation queue
+			client = new apiVideo.Client({ apiKey: apiVideoKey});
+			let recordedList = client.videos.search({"tags":'needsScreening', "sortBy":"publishedAt","sortOrder":"desc"});
+			recordedList.then(function(list) {
+				console.log("list of tagged videos");
+				console.log(list);
+				return res.render('videos',{list});  
+			}).catch((error) => {
+				console.log(error);
+			});
+
+
 	}).catch((error) => {
 	    console.log(error);
 	});
@@ -292,6 +319,7 @@ function checkMp4(videoId, mp4, videoName) {
 				  let getmp4Url = client.videos.update(videoId, {	title: videoName});
 											console.log(getmp4Url);
 				getmp4Url.then(function(video) {
+					console.log(video);
 					mp4 = video.assets.mp4;
 					console.log("got the mp4url", mp4);
 				 	 //now we have the mp4 url, we can 
