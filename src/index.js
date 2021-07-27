@@ -287,7 +287,7 @@ app.post('/', (req, res) => {
 
 
 //testing on 3001
-app.listen(3002, () =>
+app.listen(process.env.PORT || 3002, () =>
   console.log('Example app listening on port 3002!'),
 );
 process.on('uncaughtException', function(err) {
