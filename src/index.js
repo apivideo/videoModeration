@@ -22,6 +22,21 @@ const http = require('http');
 const fs = require('fs');
 let threshold = 0.9;
 
+//rate limiting code
+//rate limiting to protect the demos
+const rateLimit = require("express-rate-limit");
+app.use(
+	rateLimit({
+	  windowMs:  60 * 60 * 1000, // 1 hour duration in milliseconds
+	  max: 10,
+	  message: "You exceeded 5 requests in 1 hour.",
+	  headers: true,
+	})
+  );
+  
+
+
+
 //apivideo
 const apiVideo = require('@api.video/nodejs-sdk');
 
@@ -34,6 +49,12 @@ const hiveModerationLongKey = process.env.hiveModerationLongKey;
 
 const hiveKey = hiveModerationShortKey;
 // website demo
+
+app.get('/ratelimit',(req,res)=>{
+	console.log("rate limiting test");
+	res.sendStatus(200);
+});
+
 //get request is the initial request - load the HTML page with the form
 app.get('/', (req, res) => {
 		res.sendFile(path.join(__dirname, '../public', 'indexChunks.html'));  

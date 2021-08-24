@@ -98,8 +98,26 @@
 		var start =0; 
 		var chunkEnd = start + chunkSize;
 		//upload the first chunk to get the videoId
-		createChunk(videoId, start);
 		
+		//adding in a rate limiting step 
+		var qReq = new XMLHttpRequest();
+		qReq.open("GET", "/ratelimit");
+		qReq.onload = function (oEvent) {
+
+			console.log(qReq.status);
+				//once we create the video id do stuff
+				if(qReq.status == 429){
+					//rate limited
+					document.getElementById("video-information").innerHTML = "Your uploads have been rate limited. We allow 5 uploads/hour with this demo app. Please try again in a bit."
+				}
+				else{
+					//upload the first chunk to get the videoId
+					//its ok to upload the video, we are not rate limited
+					createChunk(videoId, start);
+		
+				}
+		}
+		qReq.send();
 		
 		
 		function createChunk(videoId, start, end){
